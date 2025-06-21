@@ -17,39 +17,40 @@ class Stripe {
 }
 
 class PayPalAdapter implements PaymentProcessor {
-    private PayPal paypal;
+    private PayPal pp;
 
-    public PayPalAdapter(PayPal paypal) {
-        this.paypal = paypal;
+    public PayPalAdapter(PayPal p) {
+        this.pp = p;
     }
 
     @Override
     public void processPayment(double amount) {
-        paypal.sendPayment(amount);
+        pp.sendPayment(amount); 
     }
 }
 
 class StripeAdapter implements PaymentProcessor {
-    private Stripe stripe;
+    private Stripe stripeClient;
 
-    public StripeAdapter(Stripe stripe) {
-        this.stripe = stripe;
+    public StripeAdapter(Stripe stripeClient) {
+        this.stripeClient = stripeClient;
     }
 
     @Override
     public void processPayment(double amount) {
-        stripe.makePayment(amount);
+        stripeClient.makePayment(amount); 
     }
 }
 
 public class AdapterPatternExample {
     public static void main(String[] args) {
-        PayPal paypal = new PayPal();
-        PaymentProcessor paypalProcessor = new PayPalAdapter(paypal);
-        paypalProcessor.processPayment(10);
 
-        Stripe stripe = new Stripe();
-        PaymentProcessor stripeProcessor = new StripeAdapter(stripe);
-        stripeProcessor.processPayment(15);
+        PayPal myPaypal = new PayPal();
+        PaymentProcessor ppProcessor = new PayPalAdapter(myPaypal);
+        ppProcessor.processPayment(10.00);  
+
+        Stripe st = new Stripe();  
+        PaymentProcessor stProcessor = new StripeAdapter(st);
+        stProcessor.processPayment(15.00);  
     }
 }
