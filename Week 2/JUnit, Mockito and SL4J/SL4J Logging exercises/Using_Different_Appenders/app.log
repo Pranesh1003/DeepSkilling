@@ -1,0 +1,4 @@
+13:28:40.863 [main] DEBUG o.e.MultiAppenderLoggingExample - Debug message: Application started
+13:28:40.866 [main] INFO  o.e.MultiAppenderLoggingExample - Info message: Running multi-appender logging example
+13:28:40.866 [main] WARN  o.e.MultiAppenderLoggingExample - Warning message: This is a sample warning
+13:28:40.866 [main] ERROR o.e.MultiAppenderLoggingExample - Error message: This is a sample error
