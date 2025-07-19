@@ -32,7 +32,6 @@ public class ECommerceSearch {
         }
         return null;
     }
-
     public static Product binarySearch(Product[] products, int productId) {
         int low = 0;
         int high = products.length - 1;
